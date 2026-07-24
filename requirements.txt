@@ -1,0 +1,19 @@
+# Core orchestration
+langchain-core>=0.3
+langchain>=0.3
+langgraph>=0.2
+
+# CrewAI orchestration path
+crewai>=0.100
+
+# Model providers (install the ones you actually use)
+langchain-openai
+langchain-anthropic
+langchain-ollama
+
+# Tools
+ddgs
+
+# Dev / test
+pytest
+python-dotenv
