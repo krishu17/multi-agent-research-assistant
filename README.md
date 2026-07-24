@@ -98,6 +98,38 @@ LLM_PROVIDER=openai OPENAI_API_KEY=sk-... python -m src.cli langgraph "..."
 CREWAI_MODEL=openai/gpt-4.1 OPENAI_API_KEY=sk-... python -m src.cli crewai "..."
 ```
 
+## UI
+
+```bash
+streamlit run app.py
+```
+
+A single-page Streamlit front end over the same two orchestration paths —
+pick LangGraph or CrewAI in the sidebar, choose a provider (`mock` needs
+nothing), type a request, and see the final answer plus a per-subtask
+breakdown with tool traces for the LangGraph path. `app.py` contains no
+agent logic of its own; it only calls `src/graph.py`'s and `src/crew.py`'s
+`run()` functions. API keys typed into the sidebar are kept in `os.environ`
+for that process only — never written to disk.
+
+Defaults to `LLM_PROVIDER=mock`, so it's fully click-through-able with zero
+configuration.
+
+### Deploying it
+
+The app is a single Streamlit script with no database, so it deploys as-is
+to [Streamlit Community Cloud](https://streamlit.io/cloud) for free:
+
+1. Push this repo to GitHub (public repo required for the free tier).
+2. On share.streamlit.io, "New app" → point it at this repo, branch `main`,
+   main file `app.py`.
+3. Leave `LLM_PROVIDER` unset (defaults to `mock`) or add real keys under
+   the app's **Settings → Secrets** to enable the OpenAI/Anthropic/CrewAI
+   paths for visitors.
+
+No custom domain needed — Streamlit Community Cloud gives you a free
+`*.streamlit.app` subdomain, which is enough for a portfolio link.
+
 ## Test
 
 ```bash

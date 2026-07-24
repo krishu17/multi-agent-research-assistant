@@ -14,6 +14,9 @@ langchain-ollama
 # Tools
 ddgs
 
+# UI
+streamlit
+
 # Dev / test
 pytest
 python-dotenv
