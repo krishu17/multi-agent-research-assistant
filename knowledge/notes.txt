@@ -1,0 +1,6 @@
+This is an example local knowledge file for the file_lookup tool.
+Drop any .txt files into this knowledge/ directory and the worker agent
+can retrieve lines from them by keyword match -- a stand-in for an
+internal document/database lookup when a web search isn't appropriate.
+LangGraph is used here for the planner/fan-out/aggregate state machine.
+CrewAI is used here for the role-based Researcher/Writer/Reviewer path.
